@@ -3,7 +3,7 @@
     <div class="main">
 
         
-        
+        <h1>Find ILS frequencies & more </h1>
         <autocomplete
             :search="search"
             :baseClass="'autocomplete'"
@@ -52,6 +52,20 @@
 
 
 export default {
+    metaInfo: {
+      title: 'ILS Lookup | Find ILS Frequencies | Flight Sim Tool',
+      meta: [
+          {
+              name: 'description',
+              content: 'Quickly find ILS frequencies and other runway information for flight simulator. Includes all the airports in the world!',
+              keywords: 'ILS, Flight Sim, frequency, frequencies'
+          }
+      ],
+      htmlAttrs: {
+        lang: 'en',
+        amp: true
+      }
+    },
     name: 'Home',
     methods: {
         search(input) {
@@ -94,6 +108,10 @@ export default {
     /* border: 1px solid white; */
     justify-content: center;
     margin-top: 20px;
+}
+
+.main h1 {
+    color: white;
 }
 
 ::v-deep .autocomplete-input {
@@ -192,7 +210,9 @@ export default {
     /* ::v-deep .medium-flag {
         display: none;
     } */
-
+    .main h1 {
+        font-size: 20px;
+    }
 }
 
 

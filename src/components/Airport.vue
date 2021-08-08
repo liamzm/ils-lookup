@@ -65,6 +65,20 @@
 import Runway from '@/components/Runway'
 
 export default {
+    metaInfo: {
+      title: `Find ILS Frequency`,
+      meta: [
+          {
+              name: 'description',
+              content: 'Find ILS frequency',
+              keywords: 'ILS, Flight Sim, frequency, frequencies'
+          }
+      ],
+      htmlAttrs: {
+        lang: 'en',
+        amp: true
+      }
+    },
     name: 'Airport',
     components: {
         Runway
