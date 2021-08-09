@@ -3,11 +3,6 @@
 <template>
 
     <div class="runway-info">
-
-        <!-- <h2>{{ airport.icao }}</h2>
-        <h3>{{ runway.ident }}</h3> -->
-
-        <!-- {{ runway }} -->
         
         <div class="runway-container"  :style="{ 'transform' : `rotate(${runway.bearing - 180}deg)` }">
             <img class="ils" src="@/assets/ils.svg" />

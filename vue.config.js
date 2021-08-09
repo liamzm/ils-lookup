@@ -10,7 +10,7 @@ module.exports = {
     },
     pwa: {
         name: 'ILS Lookup',
-        themeColor: '#0F4758',
+        themeColor: '#v',
         msTileColor: '#000000',
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'default',

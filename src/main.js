@@ -5,12 +5,13 @@ import VueRouter from 'vue-router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { airports } from './airports/airports.js'
+import { airports } from './airports/airports_v4.js'
 import { countries } from './airports/countries.js'
 import Home from '@/components/Home'
 import Airport from '@/components/Airport'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import CountryFlag from 'vue-country-flag'
+
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.config.productionTip = false

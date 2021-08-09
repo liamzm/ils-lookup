@@ -1,49 +1,57 @@
 <template>
 
-    <div class="main">
+    <div>
 
-        
-        <h1>Find ILS frequencies & more </h1>
-        <autocomplete
-            :search="search"
-            :baseClass="'autocomplete'"
-            :countries="this.$countries"
-            placeholder="Enter an ICAO code, city, or airport name..."
-            aria-label="Enter an ICAO code, city, or airport name..."
-            >
+        <img class="overlay" src="@/assets/a380.jpg" />
+
+        <div class="container">
+
+            <div class="main">
+
+                <h1>Find ILS frequencies & more </h1>
+                <autocomplete
+                    :search="search"
+                    :debounceTime="500"
+                    :baseClass="'autocomplete'"
+                    :countries="this.$countries"
+                    placeholder="Enter an ICAO code, city, or airport name..."
+                    aria-label="Enter an ICAO code, city, or airport name..."
+                    >
 
 
-            <template #result="{ result, props }">
+                    <template #result="{ result, props }">
 
-                <div v-bind="props" class="autocomplete-result" @click="navigateToAirport(result)">
+                        <div v-bind="props" class="autocomplete-result" @click="navigateToAirport(result['ICAO'])">
+                            
+                            <div class="init-info">
+                            <div class="airport icao" v-if="result.icao != ''">
+                                {{ result["ICAO"] }}
+                            </div>
+                                <country-flag class="medium-flag" :rounded="true" :country="getCountryId(result['Country'])" size='medium'/>
+                            </div>
+
+                            <div class="airport name">
+                                {{ result["Name"] }}
+                            </div>
+                            <div class="airport city">
+                                {{ result["City"] }}, {{ result["Country"] }}
+                            </div>  
+
+                            <div class="airport">
+                                
+                            </div>                                          
+                            <div v-html="result.snippet" />
+                        </div>
+
+                    </template>
+
+                </autocomplete>
                     
-                    <div class="init-info">
-                    <div class="airport icao" v-if="result.icao != ''">
-                        {{ result.icao }}
-                    </div>
-                        <country-flag class="medium-flag" :rounded="true" :country="getCountryId(result.country)" size='medium'/>
-                    </div>
+            </div>
 
-                    <div class="airport name">
-                        {{ result.name }}
-                    </div>
-                    <div class="airport city">
-                        {{ result.city }}, {{ result.country}}
-                    </div>  
+        </div>
 
-                    <div class="airport">
-                        
-                    </div>                                          
-                    <div v-html="result.snippet" />
-                </div>
-
-            </template>
-
-        </autocomplete>
-            
-    </div>
-
-
+</div>
 
 
 </template>
@@ -73,7 +81,7 @@ export default {
             var result = []
             if (input.length < 1) { return [] }
             airports.filter(airport => {
-                if (airport.name.toLowerCase().startsWith(input.toLowerCase()) || airport.icao.toLowerCase().startsWith(input.toLowerCase()) || airport.city.toLowerCase().startsWith(input.toLowerCase())) {
+                if (airport["Name"].toLowerCase().includes(input.toLowerCase()) || airport["ICAO"].toLowerCase().includes(input.toLowerCase()) || airport["City"].toLowerCase().includes(input.toLowerCase())) {
                     result.push(airport)
                 }
             })
@@ -83,7 +91,7 @@ export default {
             return this.$countries[country]
         },
         navigateToAirport(result) {
-            this.$router.push({ path: `/${result.icao}` });
+            this.$router.push({ path: `/${result}` });
         }
     }   
 }
@@ -95,6 +103,25 @@ export default {
 
 <style scoped>
 
+.container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /* height: 1000px; */
+    overflow: hidden;
+    /* height: 100%; */
+    background-color: rgba(15, 70, 88, 0.8);
+    z-index: 2;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: 500px;
+    object-fit: cover;
+}
+
 .main {
     min-height: 80vh;
     width: 100%;
@@ -105,6 +132,9 @@ export default {
     max-width: 1500px;
     margin: auto;
     flex-direction: column;
+    /* background-color: #0F4758; */
+    position: relative;
+    z-index: 3;
     /* border: 1px solid white; */
     justify-content: center;
     margin-top: 20px;
@@ -190,6 +220,12 @@ export default {
     width: 400px !important;
 } */
 @media(max-width: 700px) {
+    .container {
+        height: 800px;
+    }
+    .overlay {
+        height: 800px;
+    }
 
     ::v-deep .autocomplete-input {
         font-size: 20px;

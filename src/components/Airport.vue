@@ -13,7 +13,7 @@
                 disableDefaultUi: false
             }"
             map-type-id="satellite"
-            style="width: 100%; height: 300px"
+            style="width: 100%; height: 400px"
         ></GmapMap>
 
         <div class="main">
@@ -106,14 +106,14 @@ export default {
             this.icao_code = icao_code;
             var result = []
             airports.filter(airport => { 
-                if (airport.icao.toLowerCase().startsWith(this.icao_code.toLowerCase())) {
+                if (airport["ICAO"].toLowerCase().startsWith(this.icao_code.toLowerCase())) {
                     result.push(airport)
                     this.airport = airport
-                    this.airport_name = airport.name
-                    this.airport_city = airport.city
-                    this.airport_country = airport.country
-                    this.latitude = airport.lat
-                    this.longitude = airport.lon
+                    this.airport_name = airport["Name"]
+                    this.airport_city = airport["City"]
+                    this.airport_country = airport["Country"]
+                    this.latitude = airport["Latitude"]
+                    this.longitude = airport["Longitude"]
                     
                 }
             })
