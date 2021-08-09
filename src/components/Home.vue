@@ -106,7 +106,7 @@ export default {
 .container {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 80vh;
     /* height: 1000px; */
     overflow: hidden;
     /* height: 100%; */
@@ -118,7 +118,7 @@ export default {
     position: absolute;
     width: 100%;
     z-index: 1;
-    height: 500px;
+    height: 80vh;
     object-fit: cover;
 }
 
@@ -128,7 +128,7 @@ export default {
     margin-top: 0px;
     display: flex;
     width: 90%;
-    height: 60vh;
+    height: 80vh;
     max-width: 1500px;
     margin: auto;
     flex-direction: column;
