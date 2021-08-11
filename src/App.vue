@@ -12,6 +12,12 @@ import Footer from '@/components/Footer'
 
 export default {
   name: 'App',
+    metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    // title: 'Find ILS Frequency',
+    // all titles will be injected into this template
+    titleTemplate: '%s | Find ILS Frequency'
+  },
   components: {
     Navbar,
     Footer

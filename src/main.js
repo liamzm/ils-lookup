@@ -35,17 +35,26 @@ Vue.use(VueGoogleMaps, {
 import VueMeta from 'vue-meta'
 
 Vue.use(VueMeta, {
-  // optional pluginOptions
+  keyName: 'metaInfo',
+  attribute: 'data-vue-meta',
+  ssrAttribute: 'data-vue-meta-server-rendered',
+  tagIDKeyName: 'vmid',
   refreshOnceOnNavigation: true
 })
 
 export const router = new VueRouter({
   mode: 'history',
+  beforeEach(toRoute, fromRoute, next) {
+    window.document.title = router.currentRoute.params.id;
+
+    next();
+  },
   routes: [
       { path: "/", component: Home },
       { path: "/:id", component: Airport }
   ]
 });
+
 
 
 const airportsPlugin = {

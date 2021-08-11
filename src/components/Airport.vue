@@ -65,19 +65,21 @@
 import Runway from '@/components/Runway'
 
 export default {
-    metaInfo: {
-      title: `Find ILS Frequency`,
-      meta: [
-          {
-              name: 'description',
-              content: 'Find ILS frequency',
-              keywords: 'ILS, Flight Sim, frequency, frequencies'
-          }
-      ],
-      htmlAttrs: {
-        lang: 'en',
-        amp: true
-      }
+    metaInfo() {
+        return {
+            title: `${this.icao_code} ILS Frequencies | ${this.airport_name}`,
+            meta: [
+                {
+                    name: 'description',
+                    content: `Find ILS frequency for ${this.icao_code} | Find flight sim information for ${this.icao_code}`,
+                    keywords: 'ILS, Flight Sim, frequency, frequencies'
+                }
+            ],
+            htmlAttrs: {
+                lang: 'en',
+                amp: true
+            }
+        }
     },
     name: 'Airport',
     components: {
@@ -98,6 +100,7 @@ export default {
     },
     created () {
         this.getAirportInfo();
+        // window.document.title = this.$router.currentRoute.params.id;
     },
     methods: {
         getAirportInfo() {

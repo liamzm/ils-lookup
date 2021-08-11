@@ -9,6 +9,7 @@
             <div class="main">
 
                 <h1>Find ILS frequencies & more </h1>
+                <h2>Enter airport name, ICAO code, or city name to search</h2>
                 <autocomplete
                     :search="search"
                     :debounceTime="500"
@@ -61,11 +62,12 @@
 
 export default {
     metaInfo: {
-      title: 'ILS Lookup | Find ILS Frequencies | Flight Sim Tool',
+      title: 'ILS Lookup | Find ILS Frequency | Flight Sim Tool',
+      titleTemplate: null,
       meta: [
           {
               name: 'description',
-              content: 'Quickly find ILS frequencies and other runway information for flight simulator. Includes all the airports in the world!',
+              content: 'Quickly find ILS frequency and other runway information for flight simulator. Includes all the airports in the world!',
               keywords: 'ILS, Flight Sim, frequency, frequencies'
           }
       ],
@@ -142,6 +144,13 @@ export default {
 
 .main h1 {
     color: white;
+    margin: 0px 0px 10px 0px;
+}
+
+.main h2 {
+    color: white;
+    margin: 0px 0px 10px 0px;
+    font-weight: 200;
 }
 
 ::v-deep .autocomplete-input {
@@ -248,6 +257,10 @@ export default {
     } */
     .main h1 {
         font-size: 20px;
+    }
+
+    .main h2 {
+        font-size: 15px;
     }
 }
 
