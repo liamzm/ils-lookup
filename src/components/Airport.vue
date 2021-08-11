@@ -67,7 +67,7 @@ import Runway from '@/components/Runway'
 export default {
     metaInfo() {
         return {
-            title: `${this.icao_code} ILS Frequencies | ${this.airport_name}`,
+            title: `${this.icao_code} ILS Frequency | ${this.airport_name}`,
             meta: [
                 {
                     name: 'description',
