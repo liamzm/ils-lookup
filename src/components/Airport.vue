@@ -55,6 +55,11 @@
             </div>
 
         </div>
+        
+        <!-- <div id="516014418">
+            
+            <VueScriptComponent script='<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("516014418", "970x90", "516014418");});}catch (error) {}</script>'/>
+        </div> -->
 
     </div>
 
@@ -63,6 +68,7 @@
 
 <script>
 import Runway from '@/components/Runway'
+import VueScriptComponent from 'vue-script-component'
 
 export default {
     metaInfo() {
@@ -83,7 +89,8 @@ export default {
     },
     name: 'Airport',
     components: {
-        Runway
+        Runway,
+        // VueScriptComponent
     },
     data () {
         return {
@@ -101,6 +108,9 @@ export default {
     created () {
         this.getAirportInfo();
         // window.document.title = this.$router.currentRoute.params.id;
+    },
+    mounted() {
+        this.getScript();
     },
     methods: {
         getAirportInfo() {
