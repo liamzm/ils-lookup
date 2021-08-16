@@ -1,15 +1,6 @@
 <template>
     <div>
-        <div id="516014418">
-            <VueScriptComponent script='<script type="text/javascript">
-                try {
-                    window._mNHandle.queue.push(function (){
-                        window._mNDetails.loadTag("516014418", "970x90", "516014418");
-                    });
-                }
-                catch (error) {}
-            </script>' />
-        </div>
+
         <GmapMap
             :center="{lat:Number(this.latitude), lng:Number(this.longitude)}"
             :zoom="getDefaultZoom()"
@@ -103,8 +94,8 @@ export default {
     },
     name: 'Airport',
     components: {
-        Runway,
-        VueScriptComponent
+        Runway
+        // VueScriptComponent
     },
     data () {
         return {

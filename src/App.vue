@@ -1,6 +1,16 @@
 <template>
   <div id="app">
     <Navbar />
+    <div id="516014418">
+        <VueScriptComponent script='<script type="text/javascript">
+            try {
+                window._mNHandle.queue.push(function (){
+                    window._mNDetails.loadTag("516014418", "970x90", "516014418");
+                });
+            }
+            catch (error) {}
+        </script>' />
+    </div>
     <router-view/>
     <Footer />
   </div>
@@ -9,6 +19,7 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import VueScriptComponent from 'vue-script-component'
 
 export default {
   name: 'App',
@@ -20,7 +31,8 @@ export default {
   },
   components: {
     Navbar,
-    Footer
+    Footer,
+    VueScriptComponent
   }
 }
 
