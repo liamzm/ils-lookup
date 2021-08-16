@@ -56,7 +56,7 @@
 
         </div>
 
-        <VueScriptComponent script='<script async="async" data-cfasync="false" src="//upgulpinon.com/1?z=4452721"></script>' />
+        <!-- <VueScriptComponent script='<script async="async" data-cfasync="false" src="//upgulpinon.com/1?z=4452721"></script>' /> -->
         
         <!-- <div id="516014418">
             
@@ -91,8 +91,8 @@ export default {
     },
     name: 'Airport',
     components: {
-        Runway,
-        VueScriptComponent
+        Runway
+        // VueScriptComponent
     },
     data () {
         return {
