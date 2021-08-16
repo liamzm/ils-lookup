@@ -92,7 +92,7 @@ export default {
     name: 'Airport',
     components: {
         Runway,
-        // VueScriptComponent
+        VueScriptComponent
     },
     data () {
         return {
