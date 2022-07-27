@@ -8,23 +8,10 @@
             <h1>ILS LOOKUP</h1>
         </div>
 
-
-
         <div class="search" @click="goHome()">
             Search
         </div>
-
-
-
-
-
-
-
-
     </div>
-
-
-
 
 </template>
 
@@ -72,12 +59,10 @@ export default {
 }
 
 .logo {
-    /* width: 300px; */
     width: max-content;
     display: flex;
     align-items: center;
     color: white;
-    /* background-color: #344956; */
     box-sizing: border-box;
     padding: 20px 0px 20px 0px;
     font-family: 'Montserrat', sans-serif;
@@ -85,8 +70,6 @@ export default {
     font-size: 8px;
     color: #D6DF23;
     cursor: pointer;
-    /* color: */
-
 }
 
 .search {
@@ -103,7 +86,6 @@ export default {
 
 ::v-deep .autocomplete-input {
     height: 30px;
-    /* width: 300px; */
     font-size: 12.5px;
     font-family: 'Overpass', sans-serif;
     font-weight: 200;
@@ -123,7 +105,6 @@ export default {
     cursor: pointer;
     font-size: 12.5px;
     color: #344956;
-    /* color: white; */
     margin: 20px 0px 20px 0px;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 10px;

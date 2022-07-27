@@ -57,15 +57,6 @@
 
         </div>
 
-
-
-        <!-- <VueScriptComponent script='<script async="async" data-cfasync="false" src="//upgulpinon.com/1?z=4452721"></script>' /> -->
-        
-        <!-- <div id="516014418">
-            
-            <VueScriptComponent script='<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("516014418", "970x90", "516014418");});}catch (error) {}</script>'/>
-        </div> -->
-
     </div>
 
 
@@ -87,15 +78,13 @@ export default {
                 }
             ],
             htmlAttrs: {
-                lang: 'en',
-                amp: true
+                lang: 'en'
             }
         }
     },
     name: 'Airport',
     components: {
         Runway
-        // VueScriptComponent
     },
     data () {
         return {
@@ -112,10 +101,6 @@ export default {
     },
     created () {
         this.getAirportInfo();
-        // window.document.title = this.$router.currentRoute.params.id;
-    },
-    mounted() {
-        // this.getScript();
     },
     methods: {
         getAirportInfo() {
@@ -139,8 +124,6 @@ export default {
         },
         getAdditionalAirportInfo() {
             var api = `https://api.flightplandatabase.com/nav/airport/${this.icao_code}`
-    
-            
             
             this.$http.get(api).then((response) => {
                 this.runways = response.data.runways
@@ -167,7 +150,6 @@ export default {
                 if (String(navaids[i].name).includes('ILS')) {
                     ils.push(navaids[i].frequency)
                 }
-            
             }
             return ils[0]
         },

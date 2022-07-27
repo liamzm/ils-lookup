@@ -6,6 +6,8 @@
 
         <div class="container">
 
+            <OpenSourceRefer />
+
             <div class="main">
 
                 <h1>Find ILS frequencies & more </h1>
@@ -38,9 +40,7 @@
                                 {{ result["City"] }}, {{ result["Country"] }}
                             </div>  
 
-                            <div class="airport">
-                                
-                            </div>                                          
+                                  
                             <div v-html="result.snippet" />
                         </div>
 
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-
+import OpenSourceRefer from '@/components/miscellaneous/OpenSourceRefer.vue'
 
 export default {
     metaInfo: {
@@ -72,11 +72,13 @@ export default {
           }
       ],
       htmlAttrs: {
-        lang: 'en',
-        amp: true
+        lang: 'en'
       }
     },
     name: 'Home',
+    components: {
+      OpenSourceRefer
+    },
     methods: {
         search(input) {
             var airports = this.$airports
