@@ -7,16 +7,24 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { airports } from './airports/airports_v4.js'
 import { countries } from './airports/countries.js'
+import { airlines } from './airlines/airlines.js'
 import Home from '@/components/Home'
 import Airport from '@/components/Airport'
+import Airline from '@/components/airlines/Airline'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import CountryFlag from 'vue-country-flag'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faPlane } from '@fortawesome/free-solid-svg-icons'
+
 
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.config.productionTip = false
 
 Vue.component('country-flag', CountryFlag)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(VueRouter)
 
@@ -28,8 +36,6 @@ Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBk26jAjwlqozc1n4GwkzXdnkyEHheqzkY'
   },
- 
-
 })
 
 import VueMeta from 'vue-meta'
@@ -51,10 +57,17 @@ export const router = new VueRouter({
   },
   routes: [
       { path: "/", component: Home },
-      { path: "/:id", component: Airport }
+      { path: "/:id", component: Airport },
+      { path: "/airlines/:airline", component: Airline }
   ]
 });
 
+const airlinesPlugin = {
+  install() {
+    Vue.airlines = airlines
+    Vue.prototype.$airlines = airlines
+  }
+}
 
 
 const airportsPlugin = {
@@ -73,6 +86,9 @@ const countriesPlugin = {
 
 Vue.use(airportsPlugin)
 Vue.use(countriesPlugin)
+Vue.use(airlinesPlugin)
+
+library.add(faPlane)
 
 new Vue({
   router,

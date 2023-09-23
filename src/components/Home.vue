@@ -1,56 +1,62 @@
 <template>
 
-    <div>
+  <div>
 
-        <img class="overlay" src="@/assets/a380.jpg" />
+    <img class="overlay" src="@/assets/a380.jpg" />
 
-        <div class="container">
+    <div class="container">
 
-            <OpenSourceRefer />
+      <OpenSourceRefer />
 
-            <div class="main">
+      <div class="main">
 
-                <h1>Find ILS frequencies & more </h1>
-                <h2>Enter airport name, ICAO code, or city name to search</h2>
-                <autocomplete
-                    :search="search"
-                    :debounceTime="500"
-                    :baseClass="'autocomplete'"
-                    :countries="this.$countries"
-                    placeholder="Enter an ICAO code, city, or airport name..."
-                    aria-label="Enter an ICAO code, city, or airport name..."
-                    >
+        <h1>Find ILS frequencies & more </h1>
+        <h2>Enter airport name, ICAO code, or city name to search</h2>
+        <autocomplete
+            :search="search"
+            :debounceTime="500"
+            :baseClass="'autocomplete'"
+            :countries="this.$countries"
+            placeholder="Enter an ICAO code, city, or airport name..."
+            aria-label="Enter an ICAO code, city, or airport name..."
+            >
 
 
-                    <template #result="{ result, props }">
+            <template #result="{ result, props }">
 
-                        <div v-bind="props" class="autocomplete-result" @click="navigateToAirport(result['ICAO'])">
-                            
-                            <div class="init-info">
-                            <div class="airport icao" v-if="result.icao != ''">
-                                {{ result["ICAO"] }}
-                            </div>
-                                <country-flag class="medium-flag" :rounded="true" :country="getCountryId(result['Country'])" size='medium'/>
-                            </div>
-
-                            <div class="airport name">
-                                {{ result["Name"] }}
-                            </div>
-                            <div class="airport city">
-                                {{ result["City"] }}, {{ result["Country"] }}
-                            </div>  
-
-                                  
-                            <div v-html="result.snippet" />
-                        </div>
-
-                    </template>
-
-                </autocomplete>
+                <div v-bind="props" class="autocomplete-result" @click="navigateToAirport(result['ICAO'])">
                     
-            </div>
+                    <div class="init-info">
+                    <div class="airport icao" v-if="result.icao != ''">
+                        {{ result["ICAO"] }}
+                    </div>
+                        <country-flag class="medium-flag" :rounded="true" :country="getCountryId(result['Country'])" size='medium'/>
+                    </div>
 
-        </div>
+                    <div class="airport name">
+                        {{ result["Name"] }}
+                    </div>
+                    <div class="airport city">
+                        {{ result["City"] }}, {{ result["Country"] }}
+                    </div>  
+
+                          
+                    <div v-html="result.snippet" />
+                </div>
+
+            </template>
+
+        </autocomplete>
+              
+      </div>
+
+    </div>
+
+    <div class="container">
+
+      <Airlines />
+
+    </div>
 
 </div>
 
@@ -59,6 +65,7 @@
 
 <script>
 import OpenSourceRefer from '@/components/miscellaneous/OpenSourceRefer.vue'
+import Airlines from '@/components/airlines/Airlines.vue'
 
 export default {
     metaInfo: {
@@ -77,26 +84,27 @@ export default {
     },
     name: 'Home',
     components: {
-      OpenSourceRefer
+      OpenSourceRefer,
+      Airlines
     },
     methods: {
-        search(input) {
-            var airports = this.$airports
-            var result = []
-            if (input.length < 1) { return [] }
-            airports.filter(airport => {
-                if (airport["Name"].toLowerCase().includes(input.toLowerCase()) || airport["ICAO"].toLowerCase().includes(input.toLowerCase()) || airport["City"].toLowerCase().includes(input.toLowerCase())) {
-                    result.push(airport)
-                }
-            })
-            return result
-        },
-        getCountryId(country) {
-            return this.$countries[country]
-        },
-        navigateToAirport(result) {
-            this.$router.push({ path: `/${result}` });
-        }
+      search(input) {
+          var airports = this.$airports
+          var result = []
+          if (input.length < 1) { return [] }
+          airports.filter(airport => {
+              if (airport["Name"].toLowerCase().includes(input.toLowerCase()) || airport["ICAO"].toLowerCase().includes(input.toLowerCase()) || airport["City"].toLowerCase().includes(input.toLowerCase())) {
+                  result.push(airport)
+              }
+          })
+          return result
+      },
+      getCountryId(country) {
+          return this.$countries[country]
+      },
+      navigateToAirport(result) {
+          this.$router.push({ path: `/${result}` });
+      }
     }   
 }
 
@@ -110,19 +118,20 @@ export default {
 .container {
     position: relative;
     width: 100%;
-    height: 80vh;
+    /* height: 80vh; */
     /* height: 1000px; */
     overflow: hidden;
     /* height: 100%; */
     background-color: rgba(15, 70, 88, 0.8);
     z-index: 2;
+    min-height: 700px;
 }
 
 .overlay {
     position: absolute;
     width: 100%;
     z-index: 1;
-    height: 80vh;
+    height: 700px;
     object-fit: cover;
 }
 

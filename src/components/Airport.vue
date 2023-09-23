@@ -117,7 +117,6 @@ export default {
                     this.airport_country = airport["Country"]
                     this.latitude = airport["Latitude"]
                     this.longitude = airport["Longitude"]
-                    
                 }
             })
             this.getAdditionalAirportInfo()
